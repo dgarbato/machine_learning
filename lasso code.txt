@@ -1,0 +1,35 @@
+ss = StandardScaler()
+X = ss.fit_transform(it2[lasso_it2])
+
+lasso1 = Lasso(max_iter = m_iter)
+    
+params = {"alpha": [0.0001, 0.001, 0.01, 0.1, 1, 10]}
+gs = GridSearchCV(lasso, params, cv=5, return_train_score=True, refit=True)
+
+gs.fit(X, y_hat)
+    
+    
+    
+
+
+
+
+gs.best_params_
+gs.score(X,log_price)
+
+adj_r2 = 1-(1-gs.score(X,log_price))*(X.shape[0] - 1) / (X.shape[0] - X.shape[1] - 1)
+adj_r2
+
+
+lasso_pred = gs.best_estimator_.predict(X)
+print('RMSE: ' + str(mean_squared_error(lasso_pred,log_price)**0.5))
+
+
+residuals = log_price - lasso_pred
+
+
+import scipy
+scipy.stats.skew(residuals)
+
+sns.set_theme(style='darkgrid')
+sns.histplot(residuals, bins=20);

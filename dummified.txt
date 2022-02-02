@@ -1,0 +1,3 @@
+d_MSSubClass, d_MSZoning, d_Street. d_Alley, d_LandContour, d_Utilities, d_LotConfig, d_Neighborhood,
+d_Condition1, d_Condition2, d_BldgType, d_HouseStyle, d_RoofStyle, d_RoofMatl, d_Exterior1st, d_Exterior2nd,
+d_MasVnrType, d_Foundation, d_Heating, d_CentralAir, d_Electrical, d_GarageType, d_GarageFinish, d_PavedDrive. d_Fence, d_MoSold 

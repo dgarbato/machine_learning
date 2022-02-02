@@ -1,0 +1,17 @@
+run value_counts
+ExterQual  
+ExterCond 
+BsmtQual
+BsmtCond
+BsmtExposure
+BsmtFinType1
+BsmtFinType2
+HeatingQC 
+KitchenQual 
+Functional
+FireplaceQu
+GarageQual
+GarageCond
+SaleCondition
+
+

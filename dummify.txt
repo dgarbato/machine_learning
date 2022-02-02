@@ -1,0 +1,41 @@
+do not dummify these two variables:
+3SsnPorch       
+ScreenPorch
+
+
+dummify
+
+MSSubClass
+MSZoning
+Street
+Alley
+
+LandContour
+Utilities
+LotConfig
+
+Neighborhood
+Condition1
+Condition2
+BldgType
+HouseStyle
+RoofStyle
+RoofMatl
+Exterior1st
+Exterior2nd
+MasVnrType
+Foundation
+Heating 
+CentralAir 
+Electrical
+GarageType
+GarageFinish 
+PavedDrive 
+Fence 
+MoSold
+SaleType
+
+pd.get_dummies(
+    df2, prefix = 'R', prefix_sep='__', columns=['RAD'],
+    drop_first=True
+)  #gets rid of R1;  By default drop_first = False
