@@ -1,4 +1,4 @@
-def regx2(model= None,
+def regx3(model= None,
 x_train = None,
 x_test = None,
 y_train = None,
@@ -13,9 +13,14 @@ tree_based = False) :
     features = list(x_train.columns)
 
     ss = StandardScaler()
-    x_train = ss.fit_transform(x_train)
-    x_test = ss.transform(x_test)
-
+    x_train = pd.DataFrame(ss.fit_transform(x_train), columns = features)
+    x_test = pd.DataFrame(ss.fit_transform(x_test), columns = features)
+    
+#     print('train ',x_train.head())
+#     print(' ')
+#     print('test ', x_test.head())
+    
+    
     gs = GridSearchCV(model, params, cv=cv_, return_train_score=True, refit=True)
     gs.fit(x_train,y_train)
     gs.best_params_
