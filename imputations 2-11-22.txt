@@ -1,0 +1,38 @@
+list_sub = ['Neighborhood','LotFrontage']
+housing_sub = housing[list_sub]
+housing_sub
+
+imputation_dict = housing_sub.groupby(["Neighborhood"]).median().to_dict()
+imputation_dict['LotFrontage']
+
+impute_index = housing_sub.LotFrontage.isnull()
+
+housing_sub.loc[impute_index,'LotFrontage'] = housing_sub.loc[impute_index].apply(lambda current_row:imputation_dict['LotFrontage'][(current_row[0])], axis=1)
+
+####  do actual imputation of LotFrontage in housing
+
+housing['LotFrontage'] =  housing_sub['LotFrontage']
+
+
+######################################################################
+# Other imputations
+
+housing.MasVnrArea = housing.MasVnrArea.fillna(0)
+
+housing.BsmtFullBath = housing.BsmtFullBath.fillna(0)
+
+housing.BsmtHalfBath = housing.BsmtHalfBath.fillna(0)
+
+housing.BsmtFinSF1 = housing.BsmtFinSF1.fillna(0)
+
+housing.BsmtFinSF2 = housing.BsmtFinSF2.fillna(0)
+
+housing.BsmtUnfSF = housing.BsmtUnfSF.fillna(0)
+
+housing.TotalBsmtSF = housing.TotalBsmtSF.fillna(0)
+
+housing.GarageCars = housing.GarageCars.fillna(0)
+
+housing.GarageArea = housing.GarageArea.fillna(0)
+
+housing.loc[housing['GarageYrBlt'].isnull(),'GarageYrBlt'] = housing['YearBuilt']

@@ -1,0 +1,11 @@
+create 
+has basement
+has 2nd floor
+has WoodDeckSF
+has OpenPorchSF
+housing['has_pool'] = housing['PoolArea'] != 0
+has unfinished basement
+has finished basement
+has EnclosedPorch
+
+has # BsmtFullBath # BsmtHalfBath 

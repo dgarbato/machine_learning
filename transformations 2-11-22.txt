@@ -1,0 +1,13 @@
+housing['bc_GrLivArea'],_ = stats.boxcox(housing.GrLivArea)
+
+housing['bc_LotArea'],_ = stats.boxcox(housing['LotArea'])
+
+housing['log_MasVnrArea'] = np.log(housing['MasVnrArea'] + 1)
+
+housing['yeo_TotalBsmtSF'],_ = stats.yeojohnson(housing['TotalBsmtSF'])
+
+housing['log_first_FlrSF'] = np.log(housing['1stFlrSF'])
+
+housing['yeo_GarageArea'],_  = stats.yeojohnson(housing['GarageArea'] )
+
+housing['log_WoodDeckSF'] = np.log(housing['WoodDeckSF'] + 1)
