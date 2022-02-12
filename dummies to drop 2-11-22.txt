@@ -1,0 +1,32 @@
+def categ_mean(
+df_name = None,
+target_mean = None,
+categ_feature = None,
+target = None):
+
+    df1 = df_name.groupby([categ_feature])[target].mean().reset_index()
+    df1 = df1.rename(columns={target:'mean_of_target'})
+
+    df1['index'] = (df1['mean_of_target']/target_mean*100).astype(int)
+
+    df2= df_name[[categ_feature,target]]
+    df2 = df2.groupby([categ_feature]).count().reset_index()
+    df2 = df2.rename(columns={target:'category_freq'})
+
+    df2['pct_total'] = df2['category_freq']/df_name.shape[0]*100
+
+    df3 = pd.merge(df2,df1)
+
+    df4 = df3.sort_values(by=['index'], ascending=False).reset_index()
+    df4 = df4.drop(columns=['level_0'])
+    return df4]
+
+
+Condition1_PosN_PosA, RoofStyle_other, RoofStyle_other,  Exterior1st_HdBoard, Exterior1st_Plywood, Exterior1st_BrkFace_BrkComm, Exterior2nd_HdBoard, Exterior2nd_Plywood,  Exterior2nd_CemntBd, Exterior2nd_BrkFace_BrkComm, Exterior2nd_WdShing_Stucco_AsbShng,  Exterior2nd_WdShing_Stucco_AsbShng ,
+Heating_GasA, SaleCondition_Partial, BldgType_2fmCon,  BldgType_2fmCon,  BldgType_Duplex, BldgType_Twnhs,  HouseStyle_1.5Unf, HouseStyle_1Story,HouseStyle_2.5Fin,
+HouseStyle_2.5Unf, HouseStyle_SFoye, HouseStyle_SLvl, PavedDrive_P 
+
+drop all mo_sold vars 
+
+
+check RoofMatl_CompShg
