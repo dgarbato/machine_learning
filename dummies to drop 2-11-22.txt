@@ -26,7 +26,21 @@ Condition1_PosN_PosA, RoofStyle_other, RoofStyle_other,  Exterior1st_HdBoard, Ex
 Heating_GasA, SaleCondition_Partial, BldgType_2fmCon,  BldgType_2fmCon,  BldgType_Duplex, BldgType_Twnhs,  HouseStyle_1.5Unf, HouseStyle_1Story,HouseStyle_2.5Fin,
 HouseStyle_2.5Unf, HouseStyle_SFoye, HouseStyle_SLvl, PavedDrive_P 
 
-drop all mo_sold vars 
+drop all mo_sold vars
+'MoSold_10', 'MoSold_11', \
+         'MoSold_12', 'MoSold_2', 'MoSold_3', 'MoSold_4', 'MoSold_5', 'MoSold_6', 'MoSold_7', 'MoSold_8',\
+         'MoSold_9', 
 
 
 check RoofMatl_CompShg
+
+# also drop
+
+'MoSold_10', 'MoSold_11', \
+         'MoSold_12', 'MoSold_2', 'MoSold_3', 'MoSold_4', 'MoSold_5', 'MoSold_6', 'MoSold_7', 'MoSold_8',\
+
+
+         'MoSold_9'
+
+#drop 
+Neighborhood_Greens_SawyerW_Blmngtn,Neighborhood_Gilbert_NWAmes

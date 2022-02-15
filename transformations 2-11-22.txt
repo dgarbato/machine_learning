@@ -28,10 +28,6 @@ housing['log_EnclosedPorch'] = np.log(housing['EnclosedPorch']+1)
 
 
 ###########################################################################
-housing['MSSubClass_60'] = housing.MSSubClass.isin(['60'])
-housing['MSSubClass_120'] = housing.MSSubClass.isin(['120'])
-housing['MSSubClass_50'] = housing.MSSubClass.isin(['50'])
-housing['MSSubClass_30'] = housing.MSSubClass.isin(['30'])
 
 housing['MSZoning_RM'] = housing.MSZoning.isin(['RM'])
 
@@ -147,6 +143,26 @@ housing['Fence_GdWo'] = housing.Fence.isin(['GdWo'])
 housing['SaleCondition_Normal'] = housing.SaleCondition.isin(['Normal'])
 
 housing['SaleCondition_Partial'] = housing.SaleCondition.isin(['Partial'])
+
+##############################################################################
+housing['Neighborhood_NoRidge_NridgHt_Veenker_StoneBr']= housing.Neighborhood.isin(['NoRidge','NridgHt','Veenker','StoneBr'])
+
+housing['Neighborhood_Somerst_Timber'] = housing.Neighborhood.isin(['Somerst','Timber'])
+
+housing['Neighborhood_ClearCr_CollgCr_Crawfor'] = housing.Neighborhood.isin(['ClearCr','CollgCr','Crawfor'])
+
+housing['Neighborhood_Greens_SawyerW_Blmngtn'] = housing.Neighborhood.isin(['Greens','SawyerW','Blmngtn'])
+
+housing['Neighborhood_Gilbert_NWAmes'] = housing.Neighborhood.isin(['Gilbert','NWAmes'])
+
+housing['Neighborhood_Mitchel_NPkVill'] = housing.Neighborhood.isin(['Mitchel','NPkVill'])
+
+housing['Neighborhood_NAmes_SWISU_Sawyer'] = housing.Neighborhood.isin(['NAmes','SWISU','Sawyer'])
+
+housing['Neighborhood_BrkSide_Edwards_Blueste_OldTown_IDOTRR'] = housing.Neighborhood.isin(['BrkSide','Edwards','Blueste','OldTown','IDOTRR'])
+
+
+
 
 
 
