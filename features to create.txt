@@ -9,3 +9,19 @@ has finished basement
 has EnclosedPorch
 
 has # BsmtFullBath # BsmtHalfBath 
+
+has LowQualFinSF
+
+
+housing['has_pool'] = housing['PoolArea'] != 0
+
+
+delete
+YearBuilt
+YearRemodAdd
+YrSold
+
+
+TotalBsmtSF
+Heating
+BsmtFinSF2

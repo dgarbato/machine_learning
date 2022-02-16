@@ -1,23 +1,23 @@
-housing['bc_GrLivArea'],_ = stats.boxcox(housing.GrLivArea)
+housing2['bc_GrLivArea'],_ = stats.boxcox(housing2.GrLivArea)
 
-housing['bc_LotArea'],_ = stats.boxcox(housing['LotArea'])
+housing2['bc_LotArea'],_ = stats.boxcox(housing2['LotArea'])
 
-housing['log_MasVnrArea'] = np.log(housing['MasVnrArea'] + 1)
+housing2['log_MasVnrArea'] = np.log(housing2['MasVnrArea'] + 1)
 
-housing['yeo_TotalBsmtSF'],_ = stats.yeojohnson(housing['TotalBsmtSF'])
+housing2['yeo_TotalBsmtSF'],_ = stats.yeojohnson(housing2['TotalBsmtSF'])
 
-housing['log_first_FlrSF'] = np.log(housing['1stFlrSF'])
+housing2['log_first_FlrSF'] = np.log(housing2['1stFlrSF'])
 
-housing['yeo_GarageArea'],_  = stats.yeojohnson(housing['GarageArea'] )
+housing2['yeo_GarageArea'],_  = stats.yeojohnson(housing2['GarageArea'] )
 
-housing['log_WoodDeckSF'] = np.log(housing['WoodDeckSF'] + 1)
+housing2['log_WoodDeckSF'] = np.log(housing2['WoodDeckSF'] + 1)
 
-housing['log_OpenPorchSF'] = np.log(housing['OpenPorchSF'] + 1)
+housing2['log_OpenPorchSF'] = np.log(housing2['OpenPorchSF'] + 1)
 
 
-housing['yeo_LotFrontage'],_ = stats.yeojohnson(housing['LotFrontage'])
+housing2['yeo_LotFrontage'],_ = stats.yeojohnson(housing2['LotFrontage'])
 
-housing['log_EnclosedPorch'] = np.log(housing['EnclosedPorch']+1)
+housing2['log_EnclosedPorch'] = np.log(housing2['EnclosedPorch']+1)
 
 ######################################################################
 
@@ -29,137 +29,137 @@ housing['log_EnclosedPorch'] = np.log(housing['EnclosedPorch']+1)
 
 ###########################################################################
 
-housing['MSZoning_RM'] = housing.MSZoning.isin(['RM'])
+housing2['MSZoning_RM'] = housing2.MSZoning.isin(['RM'])
 
-housing['paved_street'] = housing.Street == 'Pave'
+housing2['paved_street'] = housing2.Street == 'Pave'
 
-housing['LandContour_Lvl'] = housing.LandContour == 'Lvl'
-
-
-housing['LotConfig_CulDSac'] = housing.LotConfig.isin(['CulDSac'])
-
-housing['LotConfig_corner_inside_FR2'] = housing.LotConfig.isin(['Corner','Inside','FR2'])
-
-housing['Neighborhood_NoRidge_NridgHt_Veenker_StoneBr']= housing.Neighborhood.isin(['NoRidge','NridgHt','Veenker','StoneBr'])
-
-housing['Neighborhood_Somerst_Timber'] = housing.Neighborhood.isin(['Somerst','Timber'])
-
-housing['Neighborhood_ClearCr_CollgCr_Crawfor'] = housing.Neighborhood.isin(['ClearCr','CollgCr','Crawfor'])
-
-housing['Neighborhood_Greens_SawyerW_Blmngtn'] = housing.Neighborhood.isin(['Greens','SawyerW','Blmngtn'])
-
-housing['Neighborhood_Gilbert_NWAmes'] = housing.Neighborhood.isin(['Gilbert','NWAmes'])
-
-housing['Neighborhood_Mitchel_NPkVill'] = housing.Neighborhood.isin(['Mitchel','NPkVill'])
-
-housing['Neighborhood_NAmes_SWISU_Sawyer'] = housing.Neighborhood.isin(['NAmes','SWISU','Sawyer'])
-
-housing['Neighborhood_BrkSide_Edwards_Blueste_OldTown_IDOTRR'] = housing.Neighborhood.isin(['BrkSide','Edwards','Blueste','OldTown','IDOTRR'])
+housing2['LandContour_Lvl'] = housing2.LandContour == 'Lvl'
 
 
-housing['Condition1_near_RR'] = housing.Condition1.isin(['RRNn','RRNe','RRAn','RRAe'])
+housing2['LotConfig_CulDSac'] = housing2.LotConfig.isin(['CulDSac'])
 
-housing['Condition1z_Feedr_Artery'] = housing.Condition1.isin(['Feedr','Artery'])
+housing2['LotConfig_corner_inside_FR2'] = housing2.LotConfig.isin(['Corner','Inside','FR2'])
 
-housing['Condition1_PosN_PosA'] = housing.Condition1.isin(['PosN','PosA'])
+housing2['Neighborhood_NoRidge_NridgHt_Veenker_StoneBr']= housing2.Neighborhood.isin(['NoRidge','NridgHt','Veenker','StoneBr'])
 
-housing['RoofStyle_Gable'] = housing.RoofStyle.isin(['Gable'])
+housing2['Neighborhood_Somerst_Timber'] = housing2.Neighborhood.isin(['Somerst','Timber'])
 
-housing['RoofStyle_Hip'] = housing.RoofStyle.isin(['Hip'])
+housing2['Neighborhood_ClearCr_CollgCr_Crawfor'] = housing2.Neighborhood.isin(['ClearCr','CollgCr','Crawfor'])
 
-housing['RoofStyle_other'] = housing.RoofStyle.isin(['Shed','Flat','Mansard','Gambrel'])
+housing2['Neighborhood_Greens_SawyerW_Blmngtn'] = housing2.Neighborhood.isin(['Greens','SawyerW','Blmngtn'])
 
+housing2['Neighborhood_Gilbert_NWAmes'] = housing2.Neighborhood.isin(['Gilbert','NWAmes'])
 
-housing['RoofMatl_CompShg'] = housing.RoofMatl.isin(['CompShg'])
+housing2['Neighborhood_Mitchel_NPkVill'] = housing2.Neighborhood.isin(['Mitchel','NPkVill'])
 
+housing2['Neighborhood_NAmes_SWISU_Sawyer'] = housing2.Neighborhood.isin(['NAmes','SWISU','Sawyer'])
 
-housing['Exterior1st_VinylSd'] = housing.Exterior1st.isin(['VinylSd'])
-
-housing['Exterior1st_HdBoard'] = housing.Exterior1st.isin(['HdBoard'])
-
-housing['Exterior1st_MetalSd'] = housing.Exterior1st.isin(['MetalSd'])
-
-housing['Exterior1st_Wd_Sdng'] = housing.Exterior1st.isin(['Wd Sdng'])
-
-housing['Exterior1st_Plywood'] = housing.Exterior1st.isin(['Plywood'])
-
-housing['Exterior1st_CemntBd'] = housing.Exterior1st.isin(['CemntBd'])
-
-housing['Exterior1st_BrkFace_BrkComm'] = housing.Exterior1st.isin(['BrkFace','BrkComm'])
-
-housing['Exterior1st_WdShing_Stucco_AsbShng'] = housing.Exterior1st.isin(['WdShing','Stucco','AsbShng'])
+housing2['Neighborhood_BrkSide_Edwards_Blueste_OldTown_IDOTRR'] = housing2.Neighborhood.isin(['BrkSide','Edwards','Blueste','OldTown','IDOTRR'])
 
 
+housing2['Condition1_near_RR'] = housing2.Condition1.isin(['RRNn','RRNe','RRAn','RRAe'])
 
-housing['Exterior2nd_VinylSd'] = housing.Exterior2nd.isin(['VinylSd'])
+housing2['Condition1z_Feedr_Artery'] = housing2.Condition1.isin(['Feedr','Artery'])
 
-housing['Exterior2nd_HdBoard'] = housing.Exterior2nd.isin(['HdBoard'])
+housing2['Condition1_PosN_PosA'] = housing2.Condition1.isin(['PosN','PosA'])
 
-housing['Exterior2nd_MetalSd'] = housing.Exterior2nd.isin(['MetalSd'])
+housing2['RoofStyle_Gable'] = housing2.RoofStyle.isin(['Gable'])
 
-housing['Exterior2nd_Wd_Sdng'] = housing.Exterior2nd.isin(['Wd Sdng'])
+housing2['RoofStyle_Hip'] = housing2.RoofStyle.isin(['Hip'])
 
-housing['Exterior2nd_Plywood'] = housing.Exterior2nd.isin(['Plywood'])
-
-housing['Exterior2nd_CemntBd'] = housing.Exterior2nd.isin(['CemntBd'])
-
-housing['Exterior2nd_BrkFace_BrkComm'] = housing.Exterior2nd.isin(['BrkFace','BrkComm'])
-
-housing['Exterior2nd_WdShing_Stucco_AsbShng'] = housing.Exterior2nd.isin(['WdShing','Stucco','AsbShng'])
+housing2['RoofStyle_other'] = housing2.RoofStyle.isin(['Shed','Flat','Mansard','Gambrel'])
 
 
-housing['MasVnrType_Stone'] = housing.MasVnrType.isin(['Stone'])
-housing['MasVnrType_BrkFace'] = housing.MasVnrType.isin(['BrkFace'])
+housing2['RoofMatl_CompShg'] = housing2.RoofMatl.isin(['CompShg'])
 
 
-housing['Foundation_PConc'] = housing.Foundation.isin(['PConc'])
-housing['Foundation_CBlock'] = housing.Foundation.isin(['CBlock'])
-housing['Foundation_BrkTil'] = housing.Foundation.isin(['BrkTil'])
+housing2['Exterior1st_VinylSd'] = housing2.Exterior1st.isin(['VinylSd'])
+
+housing2['Exterior1st_HdBoard'] = housing2.Exterior1st.isin(['HdBoard'])
+
+housing2['Exterior1st_MetalSd'] = housing2.Exterior1st.isin(['MetalSd'])
+
+housing2['Exterior1st_Wd_Sdng'] = housing2.Exterior1st.isin(['Wd Sdng'])
+
+housing2['Exterior1st_Plywood'] = housing2.Exterior1st.isin(['Plywood'])
+
+housing2['Exterior1st_CemntBd'] = housing2.Exterior1st.isin(['CemntBd'])
+
+housing2['Exterior1st_BrkFace_BrkComm'] = housing2.Exterior1st.isin(['BrkFace','BrkComm'])
+
+housing2['Exterior1st_WdShing_Stucco_AsbShng'] = housing2.Exterior1st.isin(['WdShing','Stucco','AsbShng'])
 
 
-housing['Heating_GasA'] = housing.Heating.isin(['GasA'])
 
-housing['CentralAir_Y'] =  housing.CentralAir.isin(['Y'])
+housing2['Exterior2nd_VinylSd'] = housing2.Exterior2nd.isin(['VinylSd'])
 
-housing['Electrical_SBrkr'] =  housing.Electrical.isin(['SBrkr'])
-housing['Electrical_Fuse'] =  housing.Electrical.isin(['FuseA','FuseF','FuseP'])
+housing2['Exterior2nd_HdBoard'] = housing2.Exterior2nd.isin(['HdBoard'])
 
-housing['GarageType_BuiltIn'] =  housing.GarageType.isin(['BuiltIn'])
-housing['GarageType_Attchd'] =  housing.GarageType.isin(['Attchd'])
-housing['GarageType_Detchd'] =  housing.GarageType.isin(['Detchd'])
-housing['No_Garage'] =  housing.GarageType.isin(['No'])
+housing2['Exterior2nd_MetalSd'] = housing2.Exterior2nd.isin(['MetalSd'])
 
-housing['GarageFinish_Fin'] =  housing.GarageFinish.isin(['Fin'])
-housing['GarageFinish_RFn'] =  housing.GarageFinish.isin(['RFn'])
-housing['GarageFinish_Unf'] =  housing.GarageFinish.isin(['Unf'])
+housing2['Exterior2nd_Wd_Sdng'] = housing2.Exterior2nd.isin(['Wd Sdng'])
 
+housing2['Exterior2nd_Plywood'] = housing2.Exterior2nd.isin(['Plywood'])
 
-housing['no_fence'] =  housing.Fence.isin(['No'])
-housing['Fence_GdPrv'] = housing.Fence.isin(['GdPrv'])
-housing['Fence_MnPrv'] = housing.Fence.isin(['MnPrv'])
-housing['Fence_GdWo'] = housing.Fence.isin(['GdWo'])
+housing2['Exterior2nd_CemntBd'] = housing2.Exterior2nd.isin(['CemntBd'])
+
+housing2['Exterior2nd_BrkFace_BrkComm'] = housing2.Exterior2nd.isin(['BrkFace','BrkComm'])
+
+housing2['Exterior2nd_WdShing_Stucco_AsbShng'] = housing2.Exterior2nd.isin(['WdShing','Stucco','AsbShng'])
 
 
-housing['SaleCondition_Normal'] = housing.SaleCondition.isin(['Normal'])
+housing2['MasVnrType_Stone'] = housing2.MasVnrType.isin(['Stone'])
+housing2['MasVnrType_BrkFace'] = housing2.MasVnrType.isin(['BrkFace'])
 
-housing['SaleCondition_Partial'] = housing.SaleCondition.isin(['Partial'])
+
+housing2['Foundation_PConc'] = housing2.Foundation.isin(['PConc'])
+housing2['Foundation_CBlock'] = housing2.Foundation.isin(['CBlock'])
+housing2['Foundation_BrkTil'] = housing2.Foundation.isin(['BrkTil'])
+
+
+housing2['Heating_GasA'] = housing2.Heating.isin(['GasA'])
+
+housing2['CentralAir_Y'] =  housing2.CentralAir.isin(['Y'])
+
+housing2['Electrical_SBrkr'] =  housing2.Electrical.isin(['SBrkr'])
+housing2['Electrical_Fuse'] =  housing2.Electrical.isin(['FuseA','FuseF','FuseP'])
+
+housing2['GarageType_BuiltIn'] =  housing2.GarageType.isin(['BuiltIn'])
+housing2['GarageType_Attchd'] =  housing2.GarageType.isin(['Attchd'])
+housing2['GarageType_Detchd'] =  housing2.GarageType.isin(['Detchd'])
+housing2['No_Garage'] =  housing2.GarageType.isin(['No'])
+
+housing2['GarageFinish_Fin'] =  housing2.GarageFinish.isin(['Fin'])
+housing2['GarageFinish_RFn'] =  housing2.GarageFinish.isin(['RFn'])
+housing2['GarageFinish_Unf'] =  housing2.GarageFinish.isin(['Unf'])
+
+
+housing2['no_fence'] =  housing2.Fence.isin(['No'])
+housing2['Fence_GdPrv'] = housing2.Fence.isin(['GdPrv'])
+housing2['Fence_MnPrv'] = housing2.Fence.isin(['MnPrv'])
+housing2['Fence_GdWo'] = housing2.Fence.isin(['GdWo'])
+
+
+housing2['SaleCondition_Normal'] = housing2.SaleCondition.isin(['Normal'])
+
+housing2['SaleCondition_Partial'] = housing2.SaleCondition.isin(['Partial'])
 
 ##############################################################################
-housing['Neighborhood_NoRidge_NridgHt_Veenker_StoneBr']= housing.Neighborhood.isin(['NoRidge','NridgHt','Veenker','StoneBr'])
+housing2['Neighborhood_NoRidge_NridgHt_Veenker_StoneBr']= housing2.Neighborhood.isin(['NoRidge','NridgHt','Veenker','StoneBr'])
 
-housing['Neighborhood_Somerst_Timber'] = housing.Neighborhood.isin(['Somerst','Timber'])
+housing2['Neighborhood_Somerst_Timber'] = housing2.Neighborhood.isin(['Somerst','Timber'])
 
-housing['Neighborhood_ClearCr_CollgCr_Crawfor'] = housing.Neighborhood.isin(['ClearCr','CollgCr','Crawfor'])
+housing2['Neighborhood_ClearCr_CollgCr_Crawfor'] = housing2.Neighborhood.isin(['ClearCr','CollgCr','Crawfor'])
 
-housing['Neighborhood_Greens_SawyerW_Blmngtn'] = housing.Neighborhood.isin(['Greens','SawyerW','Blmngtn'])
+housing2['Neighborhood_Greens_SawyerW_Blmngtn'] = housing2.Neighborhood.isin(['Greens','SawyerW','Blmngtn'])
 
-housing['Neighborhood_Gilbert_NWAmes'] = housing.Neighborhood.isin(['Gilbert','NWAmes'])
+housing2['Neighborhood_Gilbert_NWAmes'] = housing2.Neighborhood.isin(['Gilbert','NWAmes'])
 
-housing['Neighborhood_Mitchel_NPkVill'] = housing.Neighborhood.isin(['Mitchel','NPkVill'])
+housing2['Neighborhood_Mitchel_NPkVill'] = housing2.Neighborhood.isin(['Mitchel','NPkVill'])
 
-housing['Neighborhood_NAmes_SWISU_Sawyer'] = housing.Neighborhood.isin(['NAmes','SWISU','Sawyer'])
+housing2['Neighborhood_NAmes_SWISU_Sawyer'] = housing2.Neighborhood.isin(['NAmes','SWISU','Sawyer'])
 
-housing['Neighborhood_BrkSide_Edwards_Blueste_OldTown_IDOTRR'] = housing.Neighborhood.isin(['BrkSide','Edwards','Blueste','OldTown','IDOTRR'])
+housing2['Neighborhood_BrkSide_Edwards_Blueste_OldTown_IDOTRR'] = housing2.Neighborhood.isin(['BrkSide','Edwards','Blueste','OldTown','IDOTRR'])
 
 
 
