@@ -1,12 +1,22 @@
-def regx3(model= None,
+#Function uses Random Search
+# Fucntion returns dictionary
+
+from sklearn.metrics import mean_squared_error
+from sklearn.preprocessing import StandardScaler 
+from sklearn.model_selection import RandomizedSearchCV
+import pandas as pd
+
+
+def regx_rs(
+model=  None,
 x_train = None,
 x_test = None,
 y_train = None,
-y_test = None,
-params = None, #put dictionary of params
+y_test =  None,
+params = None,
 cv_ = 5,
 linear_reg = True,
-tree_based = False) :
+tree_based = False):
 ######################################
 #########################################
 
@@ -15,44 +25,57 @@ tree_based = False) :
     ss = StandardScaler()
     x_train = pd.DataFrame(ss.fit_transform(x_train), columns = features)
     x_test = pd.DataFrame(ss.fit_transform(x_test), columns = features)
-    
-#     print('train ',x_train.head())
-#     print(' ')
-#     print('test ', x_test.head())
-    
-    
-    gs = GridSearchCV(model, params, cv=cv_, return_train_score=True, refit=True)
-    gs.fit(x_train,y_train)
-    gs.best_params_
 
-    model= gs.best_estimator_
+    #     print('train ',x_train.head())
+    #     print(' ')
+    #     print('test ', x_test.head())
+
+
+    rs = RandomizedSearchCV(model, params, cv=cv_, return_train_score=True, refit=True)
+    rs.fit(x_train,y_train)
+    rs.best_params_
+
+    reg_dict = {}
+    model= rs.best_estimator_
+    reg_dict['mod'] = model
     ###################################    
 
-    print('best params: ',gs.best_params_)
-    print('score: ',gs.score(x_train,y_train))
-    print('  ')
-    print('test score: ',gs.score(x_test,y_test))
+    print('best params: ',rs.best_params_)
+    reg_dict['best params'] = rs.best_params_
 
+    print('score: ',rs.score(x_train,y_train))
+    reg_dict['score'] = rs.score(x_train,y_train)
+
+    print('  ')
+    print('test score: ',rs.score(x_test,y_test))
+    reg_dict['test score'] = rs.score(x_test,y_test)
+    print(' ')
 
     if linear_reg:
-        adj_r2 = 1-(1-gs.score(x_train,y_train))*(x_train.shape[0] - 1) / (x_train.shape[0] - x_train.shape[1] - 1)
+        adj_r2 = 1-(1-rs.score(x_train,y_train))*(x_train.shape[0] - 1) / (x_train.shape[0] - x_train.shape[1] - 1)
         print('adj_r2: ', adj_r2)
-        adj_r2_test = 1-(1-gs.score(x_test,y_test))*(x_test.shape[0] - 1) / (x_test.shape[0] - x_test.shape[1] - 1)
+        reg_dict['adj_r2'] = adj_r2
+
+        adj_r2_test = 1-(1-rs.score(x_test,y_test))*(x_test.shape[0] - 1) / (x_test.shape[0] - x_test.shape[1] - 1)
         print('  ')
         print('adj_r2_test: ',adj_r2_test)
+        reg_dict['adj_r2_test'] = adj_r2_test
+
         print(' ')
 
-
-    train_pred = gs.best_estimator_.predict(x_train)
+    train_pred = rs.best_estimator_.predict(x_train)
     print('train RMSE: ' + str(mean_squared_error(train_pred,y_train)**0.5))
     print('  ')
+    reg_dict['train RMSE'] = mean_squared_error(train_pred,y_train)**0.5
 
-    test_pred = gs.best_estimator_.predict(x_test)
+    test_pred = rs.best_estimator_.predict(x_test)
     print('test RMSE: ' + str(mean_squared_error(test_pred,y_test)**0.5))
+    ###
+    reg_dict['test RMSE'] = mean_squared_error(test_pred,y_test)**0.5
 
     if linear_reg:
 
-        coefs = pd.Series(gs.best_estimator_.coef_, name = 'coef' )
+        coefs = pd.Series(rs.best_estimator_.coef_, name = 'coef' )
 
         varnames = pd.Series(features, name = 'features')
 
@@ -64,6 +87,9 @@ tree_based = False) :
 
         #return:
         model_importances = coefs_.sort_values(by=['abs_val'], ascending=False)
+        model_importances.index=(range(model_importances.shape[0]))
+        model_importances
+        reg_dict['model_importances'] = model_importances
 
         print(model_importances)
         print(' ')
@@ -80,6 +106,10 @@ tree_based = False) :
 
         model_importances = df.sort_values(by=['importances'], ascending=False)
 
+        model_importances.index=(range(model_importances.shape[0]))
+
+        reg_dict['model_importances'] = model_importances
+
 
 
     #         model_importances = pd.Series(model.feature_importances_, index = features).sort_values(ascending=False)
@@ -93,6 +123,7 @@ tree_based = False) :
         print(' ')
         sns.set_theme(style='darkgrid')
         sns.histplot(residuals, bins=20);
-    
+
     print('model_importances.shape: ',model_importances.shape)
-    return model_importances
+    
+    return reg_dict
