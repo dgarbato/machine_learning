@@ -1,8 +1,10 @@
-# Fucntion returns dictionary
+# Fucntion returns dictionary uses GridSearchCV
+
 from sklearn.metrics import mean_squared_error
 from sklearn.preprocessing import StandardScaler 
 from sklearn.model_selection import GridSearchCV
 import pandas as pd
+import numpy as np
 
 
 def regx3(

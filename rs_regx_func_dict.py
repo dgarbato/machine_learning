@@ -5,6 +5,7 @@ from sklearn.metrics import mean_squared_error
 from sklearn.preprocessing import StandardScaler 
 from sklearn.model_selection import RandomizedSearchCV
 import pandas as pd
+import numpy as np
 
 
 def regx_rs(
